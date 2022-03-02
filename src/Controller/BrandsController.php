@@ -104,4 +104,13 @@ class BrandsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function something()
+    {
+        $this->request->allowMethod(['get']);
+        $res = $this->Brands->find()->matching('Products', function ($q) {
+          return $q->where(['Products.active' => 1]);
+        })->toArray();
+        Log::debug('xx'.print_r($res, true));
+    }
 }

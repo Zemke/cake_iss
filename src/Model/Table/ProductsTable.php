@@ -47,6 +47,10 @@ class ProductsTable extends Table
             'foreignKey' => 'brand_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->addBehavior('Translate', [
+          'fields' => ['name'],
+        ]);
     }
 
     /**
